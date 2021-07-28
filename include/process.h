@@ -8,16 +8,32 @@ It contains relevant attributes as shown below
 */
 class Process {
  public:
-  int Pid();                               // TODO: See src/process.cpp
-  std::string User();                      // TODO: See src/process.cpp
-  std::string Command();                   // TODO: See src/process.cpp
-  float CpuUtilization();                  // TODO: See src/process.cpp
-  std::string Ram();                       // TODO: See src/process.cpp
-  long int UpTime();                       // TODO: See src/process.cpp
-  bool operator<(Process const& a) const;  // TODO: See src/process.cpp
-
+  int Pid();
+  long pjiffs{0};	
+  int PPid(); 
+  int state;                                
+  std::string User();                     
+  std::string Command();                   
+  float CpuUtilization();                  
+  int Ram();                      
+  long int UpTime();                       
+  bool operator<(Process const& a) const; 
+  void SetState(int nstate);
+  void SetUser(std::string nuser); 
+  void SetCpu(long pidjiffs, long sysjiffs);	  
+  void SetRam(std::string nram);
+  void SetUptime(long int uptime);
+  Process(int npid, int ppid, std::string nuser, std::string ncommand);	  
+  
   // TODO: Declare any necessary private members
  private:
+   int pid;
+   int  ppid;
+   std::string user;
+   std::string command;
+   float cpuutilization;
+   int ram;
+   long int uptime;
 };
 
 #endif

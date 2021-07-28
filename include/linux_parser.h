@@ -17,7 +17,7 @@ const std::string kMeminfoFilename{"/meminfo"};
 const std::string kVersionFilename{"/version"};
 const std::string kOSPath{"/etc/os-release"};
 const std::string kPasswordPath{"/etc/passwd"};
-
+const std::string kStatmFilename{"statm"};
 // System
 float MemoryUtilization();
 long UpTime();
@@ -26,7 +26,8 @@ int TotalProcesses();
 int RunningProcesses();
 std::string OperatingSystem();
 std::string Kernel();
-
+int State(int pid);
+long Jiffies();
 // CPU
 enum CPUStates {
   kUser_ = 0,
@@ -41,12 +42,13 @@ enum CPUStates {
   kGuestNice_
 };
 std::vector<std::string> CpuUtilization();
-long Jiffies();
 long ActiveJiffies();
 long ActiveJiffies(int pid);
 long IdleJiffies();
 
 // Processes
+
+int PPID(int pid);
 std::string Command(int pid);
 std::string Ram(int pid);
 std::string Uid(int pid);
